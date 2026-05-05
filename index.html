@@ -476,6 +476,56 @@
       }
       .price-card.featured { transform: none; }
     }
+
+    .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 32px;
+  width: auto;
+}
+
+.brand div {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand span:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.brand span:last-child {
+  font-size: 12px;
+  font-weight: 500;
+  color: #059669;
+}
+
+@media (min-width: 768px) {
+  .brand img {
+    height: 40px;
+  }
+  
+  .brand span:first-child {
+    font-size: 20px;
+  }
+  
+  .brand span:last-child {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brand img {
+    height: 48px;
+  }
+}
   </style>
 </head>
 
@@ -490,11 +540,11 @@
 <nav class="nav">
   <div class="container nav-inner">
     <!-- Logo - Tailwind only here -->
-    <a href="#" class="brand flex items-center gap-2 group">
-      <img src="images/logo.png" alt="Logo" class="h-8 w-auto md:h-10 lg:h-12">
-      <div class="flex flex-col">
-        <span class="text-lg md:text-xl font-bold text-gray-800 leading-tight">Hind Ali</span>
-        <span class="text-xs md:text-sm text-emerald-600 font-medium">Quran Tutor</span>
+  <a href="#" class="brand">
+      <img src="images/logo.png" alt="Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">Hind Ali</span>
+        <span class="brand-subtitle">Quran Tutor</span>
       </div>
     </a>
 
