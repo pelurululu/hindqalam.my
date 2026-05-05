@@ -45,21 +45,27 @@
       flex-wrap: wrap;
     }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(251, 247, 237, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(18, 60, 47, 0.08);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      gap: 20px;
-    }
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251, 247, 237, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(18, 60, 47, 0.1);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+    .nav.scrolled {
+  box-shadow: 0 4px 24px rgba(8, 39, 31, 0.1);
+  background: rgba(251, 247, 237, 0.98);
+}
+  .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 24px;
+}
     .brand {
       font-weight: 900;
       color: var(--green-dark);
@@ -507,6 +513,189 @@
   color: #059669;
 }
 
+    /* ── BRAND ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.brand-logo {
+  height: 42px;
+  width: 42px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.brand-name {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--green-dark);
+  letter-spacing: -0.3px;
+}
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-2);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* ── DESKTOP LINKS ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+.nav-links a {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover {
+  background: rgba(18, 60, 47, 0.08);
+  color: var(--green-dark);
+}
+
+/* ── RIGHT CLUSTER ── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ── LANG SWITCH ── */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  background: rgba(18, 60, 47, 0.07);
+  padding: 4px;
+  border-radius: 999px;
+}
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  padding: 6px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--green);
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.3px;
+}
+.lang-switch button.active {
+  background: var(--green);
+  color: white;
+  box-shadow: 0 2px 8px rgba(8, 39, 31, 0.2);
+}
+.lang-switch button:hover:not(.active) {
+  background: rgba(18, 60, 47, 0.12);
+}
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.nav-hamburger:hover { background: rgba(18, 60, 47, 0.08); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--green-dark);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ── */
+.nav-drawer {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(251, 247, 237, 0.98);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(18, 60, 47, 0.1);
+  box-shadow: 0 12px 32px rgba(8, 39, 31, 0.12);
+  padding: 16px 24px 24px;
+  transform: translateY(-6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.nav-drawer.open {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-drawer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+.nav-drawer ul li a {
+  display: block;
+  padding: 12px 14px;
+  color: var(--green-dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 14px;
+  transition: background 0.2s;
+}
+.nav-drawer ul li a:hover { background: rgba(18, 60, 47, 0.08); }
+.nav-drawer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(18, 60, 47, 0.08);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav .btn { display: none; } /* moves to drawer */
+  .nav-inner { padding: 12px 0; }
+}
+
+@media (max-width: 480px) {
+  .brand-subtitle { display: none; }
+  .brand-logo { height: 36px; width: 36px; }
+  .brand-name { font-size: 16px; }
+}
+
 @media (min-width: 768px) {
   .brand img {
     height: 40px;
@@ -537,33 +726,102 @@
     </div>
   </div>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <!-- Logo - Tailwind only here -->
-  <a href="#" class="brand">
-      <img src="images/logo.png" alt="Logo" class="brand-logo">
-      <div class="brand-text">
-        <span class="brand-name">Hind Ali</span>
-        <span class="brand-subtitle">Quran Tutor</span>
-      </div>
-    </a>
+<<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
 
-    <!-- Rest of your existing navigation (unchanged) -->
-    <div class="nav-links">
-      <a href="#about" data-i18n="navTeacher">Teacher</a>
-      <a href="#classes" data-i18n="navClasses">Classes</a>
-      <a href="#pricing" data-i18n="navPricing">Pricing</a>
-      <a href="#faq" data-i18n="navFaq">FAQ</a>
+      <!-- Brand -->
+      <a href="#" class="brand">
+        <img src="images/logo.png" alt="Hind Ali Quran Tutor logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-name">Hind Ali</span>
+          <span class="brand-subtitle">Quran Tutor</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav links (center) -->
+      <div class="nav-links">
+        <a href="#about"   data-i18n="navTeacher">Teacher</a>
+        <a href="#classes" data-i18n="navClasses">Classes</a>
+        <a href="#pricing" data-i18n="navPricing">Pricing</a>
+        <a href="#faq"     data-i18n="navFaq">FAQ</a>
+      </div>
+
+      <!-- Right cluster -->
+      <div class="nav-right">
+        <div class="lang-switch" aria-label="Language switcher">
+          <button type="button" class="active" data-lang="en">EN</button>
+          <button type="button" data-lang="ms">BM</button>
+          <button type="button" data-lang="ar">AR</button>
+        </div>
+        <a class="btn btn-primary"
+           href="https://wa.me/601153050524?text=Assalamualaikum..."
+           data-i18n="navWhatsapp">WhatsApp</a>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav-hamburger" id="navHamburger"
+                aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
     </div>
-    <div class="lang-switch" aria-label="Language switcher">
-      <button type="button" class="active" data-lang="en">EN</button>
-      <button type="button" data-lang="ms">BM</button>
-      <button type="button" data-lang="ar">AR</button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <ul>
+      <li><a href="#about"   data-i18n="navTeacher" onclick="closeDrawer()">Teacher</a></li>
+      <li><a href="#classes" data-i18n="navClasses" onclick="closeDrawer()">Classes</a></li>
+      <li><a href="#pricing" data-i18n="navPricing" onclick="closeDrawer()">Pricing</a></li>
+      <li><a href="#faq"     data-i18n="navFaq"     onclick="closeDrawer()">FAQ</a></li>
+    </ul>
+    <div class="nav-drawer-bottom">
+      <div class="lang-switch">
+        <button type="button" class="active" data-lang="en">EN</button>
+        <button type="button" data-lang="ms">BM</button>
+        <button type="button" data-lang="ar">AR</button>
+      </div>
+      <a class="btn btn-primary"
+         href="https://wa.me/601153050524?text=Assalamualaikum..."
+         onclick="closeDrawer()"
+         data-i18n="navWhatsapp">WhatsApp</a>
     </div>
-    <a class="btn btn-primary" href="https://wa.me/601153050524?text=Assalamualaikum%2C%20saya%20berminat%20untuk%20kelas%20private%20Al-Quran%20bersama%20Hind%20Ali.%20Boleh%20saya%20tahu%20slot%20yang%20available%3F" data-i18n="navWhatsapp">WhatsApp</a>
   </div>
 </nav>
 
+<script>
+  /* Hamburger */
+  const hamburger = document.getElementById('navHamburger');
+  const drawer    = document.getElementById('navDrawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    drawer.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeDrawer() {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+    drawer.setAttribute('aria-hidden', true);
+    document.body.style.overflow = '';
+  }
+
+  /* Close on outside click */
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#mainNav')) closeDrawer();
+  });
+
+  /* Scroll-aware shadow */
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav')
+      .classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
   <header class="hero">
     <div class="hero-video-bg" aria-hidden="true"></div>
 
