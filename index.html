@@ -489,34 +489,34 @@
 
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#" class="brand">
-      <img src="images/logo.png" alt="Hind Qalam Logo" style="height: 40px; width: auto;">
+    <!-- Logo - Tailwind only here -->
+    <a href="#" class="brand flex items-center gap-2 group">
+      <img src="images/logo.svg" alt="Logo" class="h-8 w-auto md:h-10 lg:h-12">
+      <div class="flex flex-col">
+        <span class="text-lg md:text-xl font-bold text-gray-800 leading-tight">Hind Ali</span>
+        <span class="text-xs md:text-sm text-emerald-600 font-medium">Quran Tutor</span>
+      </div>
     </a>
 
+    <!-- Rest of your existing navigation (unchanged) -->
     <div class="nav-links">
       <a href="#about" data-i18n="navTeacher">Teacher</a>
       <a href="#classes" data-i18n="navClasses">Classes</a>
       <a href="#pricing" data-i18n="navPricing">Pricing</a>
       <a href="#faq" data-i18n="navFaq">FAQ</a>
     </div>
-
     <div class="lang-switch" aria-label="Language switcher">
       <button type="button" class="active" data-lang="en">EN</button>
       <button type="button" data-lang="ms">BM</button>
       <button type="button" data-lang="ar">AR</button>
     </div>
-
     <a class="btn btn-primary" href="https://wa.me/601153050524?text=Assalamualaikum%2C%20saya%20berminat%20untuk%20kelas%20private%20Al-Quran%20bersama%20Hind%20Ali.%20Boleh%20saya%20tahu%20slot%20yang%20available%3F" data-i18n="navWhatsapp">WhatsApp</a>
   </div>
 </nav>
 
   <header class="hero">
     <div class="hero-video-bg" aria-hidden="true"></div>
-<div class="absolute top-8 left-8 z-10">
-  <a href="/" class="block">
-    <img src="images/logo.png" alt="Logo" class="h-12 w-auto">
-  </a>
-</div>
+
     <div class="container hero-grid">
       <div>
         <div class="badge" data-i18n="heroBadge">★ Native Arabic Teacher from Yemen</div>
